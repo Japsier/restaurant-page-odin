@@ -37,4 +37,31 @@ function createHeader() {
     }
 
 }
+function createContentHome () {
+    const contentDiv = document.createElement("div")
+    contentDiv.classList.add("content")
+    CONTAINER.appendChild(contentDiv)
+
+    // CHANGE THIS BASED ON PAGE 
+    // LIKELY WITH FOR LOOP
+    const contentHomeDiv = document.createElement("div")
+    contentHomeDiv.classList.add("contentHome")
+    contentDiv.appendChild(contentHomeDiv)
+    
+    const contentHeader = document.createElement("h1") 
+    contentHeader.innerText = "Pizza Shed"
+    contentHomeDiv.appendChild(contentHeader)
+
+    const contentText1 = document.createElement("p") 
+    contentText1.innerText = "Come and Enjoy our delicious pizza's!!"
+    contentHomeDiv.appendChild(contentText1)
+
+    const contentText2 = document.createElement("p") 
+    contentText2.innerText = "Now available in our brand new sheds"
+    contentHomeDiv.appendChild(contentText2)
+    
+
+
+}
 createHeader()
+createContentHome ()
