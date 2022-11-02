@@ -1,10 +1,12 @@
 console.log("Hello World!")
 import "./style.css"
-//import "build menu"
+import createMenuPage from "./menuPage.js"
+import createContactPage from "./ContactPage.js"
 //import "build Contact"
 
-
 const CONTAINER = document.querySelector(".container")
+
+
 function createHeader() {
 
     let header = document.createElement("header")
@@ -17,20 +19,29 @@ function createHeader() {
     let navButtonsDiv = document.createElement("div")
     navButtonsDiv.classList.add("navButtons")
     header.appendChild(navButtonsDiv)
-
+    //create buttons with listeners
     let navButtons = []
     for (let i = 0; i < 3; i++) {
         navButtons[i] = document.createElement("button")
         let buildDisplayFunction;
         if (i === 0) {
             navButtons[i].innerText = "home"
-            buildDisplayFunction = () => console.log("home Button")
+            buildDisplayFunction = () => {
+                document.querySelector(".content").innerHTML = ""
+                createContentHome.createHomePage()
+            }
         } else if (i === 1) {
             navButtons[i].innerText = "menu"
-            buildDisplayFunction = () =>  console.log("menu Button")
+            buildDisplayFunction = () =>  {
+                document.querySelector(".content").innerHTML = ""
+                createMenuPage()
+            }
         } else if (i === 2) {
             navButtons[i].innerText = "Contact"
-            buildDisplayFunction = () =>  console.log("Contact Button")
+            buildDisplayFunction = () =>  {
+                document.querySelector(".content").innerHTML = ""
+                createContactPage()
+            }
         }
         navButtons[i].addEventListener("click", () => buildDisplayFunction())
         navButtonsDiv.appendChild(navButtons[i])
@@ -46,32 +57,35 @@ function createFooter() {
     footer.appendChild(footerText)
 
 }
-function createContentHome () {
+const createContentHome =  (() => {
     const contentDiv = document.createElement("div")
     contentDiv.classList.add("content")
     CONTAINER.appendChild(contentDiv)
 
     // CHANGE THIS BASED ON PAGE 
     // LIKELY WITH FOR LOOP
-    const contentHomeDiv = document.createElement("div")
-    contentHomeDiv.classList.add("contentHome")
-    contentDiv.appendChild(contentHomeDiv)
+    const createHomePage = () => {
+        const contentHomeDiv = document.createElement("div")
+        contentHomeDiv.classList.add("contentHome")
+        contentDiv.appendChild(contentHomeDiv)
+        
+        const contentHeader = document.createElement("h1") 
+        contentHeader.innerText = "Pizza Shed"
+        contentHomeDiv.appendChild(contentHeader)
+
+        const contentText1 = document.createElement("p") 
+        contentText1.innerText = "Come and Enjoy our delicious pizza's!!"
+        contentHomeDiv.appendChild(contentText1)
+
+        const contentText2 = document.createElement("p") 
+        contentText2.innerText = "Now available in our brand new sheds"
+        contentHomeDiv.appendChild(contentText2)
+    }
+    createHomePage()
     
-    const contentHeader = document.createElement("h1") 
-    contentHeader.innerText = "Pizza Shed"
-    contentHomeDiv.appendChild(contentHeader)
+    return {createHomePage}
 
-    const contentText1 = document.createElement("p") 
-    contentText1.innerText = "Come and Enjoy our delicious pizza's!!"
-    contentHomeDiv.appendChild(contentText1)
-
-    const contentText2 = document.createElement("p") 
-    contentText2.innerText = "Now available in our brand new sheds"
-    contentHomeDiv.appendChild(contentText2)
-    
-
-
-}
+})()
+function changeButton() {}
 createHeader()
-createContentHome ()
 createFooter()
