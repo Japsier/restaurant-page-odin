@@ -12,7 +12,7 @@ function createHeader() {
     let header = document.createElement("header")
     CONTAINER.appendChild(header)
     let logo = document.createElement("h3")
-    logo.innerText = "Pizza Shed"
+    logo.innerText = "Pizza Tent"
     header.appendChild(logo)
     
 
@@ -43,7 +43,10 @@ function createHeader() {
                 createContactPage()
             }
         }
-        navButtons[i].addEventListener("click", () => buildDisplayFunction())
+        navButtons[i].addEventListener("click", (e) => {
+            buildDisplayFunction()
+            changeButton(e.target, navButtons)
+        })
         navButtonsDiv.appendChild(navButtons[i])
     }
 
@@ -70,7 +73,7 @@ const createContentHome =  (() => {
         contentDiv.appendChild(contentHomeDiv)
         
         const contentHeader = document.createElement("h1") 
-        contentHeader.innerText = "Pizza Shed"
+        contentHeader.innerText = "Pizza Tent"
         contentHomeDiv.appendChild(contentHeader)
 
         const contentText1 = document.createElement("p") 
@@ -86,6 +89,11 @@ const createContentHome =  (() => {
     return {createHomePage}
 
 })()
-function changeButton() {}
+function changeButton(button, allButtons) {
+    allButtons.forEach((item) => {
+        item.style.border = "1px solid black"
+    })
+    button.style.border = "3px solid black"
+}
 createHeader()
 createFooter()
