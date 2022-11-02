@@ -37,6 +37,15 @@ function createHeader() {
     }
 
 }
+function createFooter() {
+    let footer = document.createElement("footer")
+    CONTAINER.appendChild(footer)
+
+    let footerText = document.createElement("p")
+    footerText.innerText = "Made By Japsir"
+    footer.appendChild(footerText)
+
+}
 function createContentHome () {
     const contentDiv = document.createElement("div")
     contentDiv.classList.add("content")
@@ -65,3 +74,4 @@ function createContentHome () {
 }
 createHeader()
 createContentHome ()
+createFooter()
