@@ -4,7 +4,6 @@ body {
     font-size: 18px;
     font-family: 'Courier New', Courier, monospace;
     height: 100vh;
-    background-color: #eed9c4;
 }
 .container {
     height: 100%;
@@ -25,53 +24,52 @@ header > h3 {
 header > .navButtons {
     grid-area: 1 / 2 / 2 / 3;
     margin-right: 200px;
-}
-.navButtons > button {
-
-  background-color: #FFFFFF;
-  border: 1px solid #222222;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #222222;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  padding: 13px 23px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  touch-action: manipulation;
-  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
-  user-select: none;
-  -webkit-user-select: none;
-  width: auto;
-}
-.navButtons {
     display: flex;
     gap: 20px;
 }
-.navButtons > button:focus-visible {
-  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
-  transition: box-shadow .2s;
+
+.navButtons > button {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-.navButtons > button:active {
-  background-color: #F7F7F7;
-  border-color: #000000;
-  transform: scale(.96);
+.navButtons > button:after {
+  content: "";
+  background-color: #ffe54c;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
 }
 
-.navButtons > button:disabled {
-  border-color: #DDDDDD;
-  color: #DDDDDD;
-  cursor: not-allowed;
-  opacity: 1;
+.navButtons > button:hover:after {
+  top: 0px;
+  left: 0px;
 }
+
+@media (min-width: 768px) {
+    .navButtons > button {
+    padding: 13px 50px 13px;
+  }
+}
+.navButtons > .clicked::after {
+    top: 0px;
+    left: 0px;
+}
+
 footer {
     grid-area: 3 / 1 / 4 / 2;
     display: flex;
@@ -89,10 +87,17 @@ footer {
     background-size: cover;
     color: white;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 24px;
+}
+.contentHome > h1 {
+    padding-top: 200px;
 }
 .contentMenu {
     text-align: center;
-    background-color: #d9b99b;
+    background-color: #fff0db;
     border-radius: 20px;
     margin: 10px;
     margin-left: 80px;
@@ -115,15 +120,31 @@ footer {
 }
 .menuItem {
     padding: 10px;
-    background-color: #eed9c4;
     border-radius: 4px;
+    background-color: white;
     
 }
 .contentContact {
-
+    background-color: #fff0db;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .contentContact, .contentMenu, .contentHome {
     height: 100%;
-
     padding: 10px;
+}
+.visitDisplay {
+    background-color: white;
+    padding: 50px;
+    width: fit-content;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.locationDisplay {
+    height: 400px;
+    width: 600px;
 }

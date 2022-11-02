@@ -26,7 +26,7 @@ function createHeader() {
         let buildDisplayFunction;
         if (i === 0) {
             navButtons[i].innerText = "home"
-            navButtons[i].style.border = "3px solid black"
+            navButtons[i].classList.add("clicked")
             buildDisplayFunction = () => {
                 document.querySelector(".content").innerHTML = ""
                 createContentHome.createHomePage()
@@ -92,9 +92,9 @@ const createContentHome =  (() => {
 })()
 function changeButton(button, allButtons) {
     allButtons.forEach((item) => {
-        item.style.border = "1px solid black"
+        item.classList.remove("clicked")
     })
-    button.style.border = "3px solid black"
+    button.classList.add("clicked")
 }
 createHeader()
 createFooter()
