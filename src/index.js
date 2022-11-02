@@ -26,6 +26,7 @@ function createHeader() {
         let buildDisplayFunction;
         if (i === 0) {
             navButtons[i].innerText = "home"
+            navButtons[i].style.border = "3px solid black"
             buildDisplayFunction = () => {
                 document.querySelector(".content").innerHTML = ""
                 createContentHome.createHomePage()
@@ -81,7 +82,7 @@ const createContentHome =  (() => {
         contentHomeDiv.appendChild(contentText1)
 
         const contentText2 = document.createElement("p") 
-        contentText2.innerText = "Now available in our brand new sheds"
+        contentText2.innerText = "Now available in our brand new tents"
         contentHomeDiv.appendChild(contentText2)
     }
     createHomePage()
